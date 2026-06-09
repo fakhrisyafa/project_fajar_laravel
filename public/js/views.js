@@ -272,16 +272,25 @@ function renderTrans(type) {
     </div>
 
     <div class="table-wrap">
-      <table style="table-layout:auto">
+      <table style="table-layout:fixed;width:100%">
+        <colgroup>
+          <col style="width:48px">
+          <col style="width:148px">
+          <col style="min-width:160px">
+          <col style="width:88px">
+          <col style="width:138px">
+          <col style="width:200px">
+          <col style="width:52px">
+        </colgroup>
         <thead>
           <tr>
-            <th style="width:48px">No</th>
-            <th style="width:150px">Tanggal</th>
+            <th>No</th>
+            <th>Tanggal</th>
             <th>Nama Barang</th>
-            <th style="width:90px;text-align:center">Jumlah</th>
-            <th style="width:140px">Dicatat Oleh</th>
-            <th style="width:180px">Keterangan</th>
-            <th style="width:56px"></th>
+            <th style="text-align:center">Jumlah</th>
+            <th>Dicatat Oleh</th>
+            <th>Keterangan</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -294,18 +303,19 @@ function renderTrans(type) {
               </td></tr>`
             : data.map((t,i) => {
                 const tglObj = t.tgl ? new Date(t.tgl) : null;
-                const tglFmt = tglObj ? tglObj.toLocaleDateString('id-ID', {day:'2-digit',month:'short',year:'numeric'}) : '—';
+                const tglFmt = tglObj ? tglObj.toLocaleDateString('id-ID', {day:'2-digit',month:'short',year:'numeric'}) : '\u2014';
                 const waktu  = tglObj && t.tgl.length > 10 ? t.tgl.slice(11,16) : '';
+                const ketTrunc = t.ket && t.ket.length > 50 ? t.ket.slice(0,50) + '\u2026' : (t.ket || '\u2014');
                 return `
               <tr onclick="bukaDetailTrans(${t.id})" style="cursor:pointer">
-                <td style="color:var(--text-3);font-family:var(--font-mono);font-size:11px;text-align:center">${i+1}</td>
-                <td>
+                <td style="color:var(--text-3);font-family:var(--font-mono);font-size:11px;text-align:center;overflow:visible">${i+1}</td>
+                <td style="white-space:nowrap">
                   <span style="font-size:12px;color:var(--text-1);font-weight:500">${tglFmt}</span>${waktu ? `<br><span style="font-size:10px;color:var(--text-3);font-family:var(--font-mono)">${waktu}</span>` : ''}
                 </td>
-                <td>
-                  <div style="display:flex;align-items:center;gap:8px">
+                <td style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                  <div style="display:flex;align-items:center;gap:8px;overflow:hidden">
                     <div style="width:6px;height:6px;border-radius:50%;flex-shrink:0;background:${accentClr}"></div>
-                    <span style="font-weight:500;color:var(--text-0)" title="${t.nama}">${t.nama}</span>
+                    <span style="font-weight:500;color:var(--text-0);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${t.nama}">${t.nama}</span>
                   </div>
                 </td>
                 <td style="text-align:center">
@@ -313,16 +323,16 @@ function renderTrans(type) {
                     ${type === 'masuk' ? '+' : '-'}${t.jumlah}
                   </span>
                 </td>
-                <td>
-                  <div style="display:flex;align-items:center;gap:6px">
+                <td style="overflow:hidden">
+                  <div style="display:flex;align-items:center;gap:6px;overflow:hidden">
                     <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">
                       ${t.dicatat_oleh ? t.dicatat_oleh.charAt(0).toUpperCase() : '?'}
                     </div>
-                    <span style="font-size:12px;color:var(--text-2)">${t.dicatat_oleh || '—'}</span>
+                    <span style="font-size:12px;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.dicatat_oleh || '\u2014'}</span>
                   </div>
                 </td>
-                <td style="font-size:12px;color:var(--text-2)" title="${t.ket || ''}">${t.ket || '—'}</td>
-                <td>
+                <td style="font-size:12px;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${t.ket || ''}">${ketTrunc}</td>
+                <td style="overflow:visible">
                   ${window.userRole === 'Admin' ? `
                   <div class="act-wrap">
                     <button class="act-btn del" title="Hapus & Rollback Stok"
@@ -656,14 +666,22 @@ function renderLaporan() {
         </div>
       </div>
       <div class="table-wrap">
-        <table style="table-layout:auto">
+        <table style="table-layout:fixed;width:100%">
+          <colgroup>
+            <col style="width:48px">
+            <col style="width:148px">
+            <col>
+            <col style="width:88px">
+            <col style="width:80px">
+            <col style="width:200px">
+          </colgroup>
           <thead>
             <tr>
-              <th style="width:48px">No</th>
-              <th style="width:150px">Tanggal</th>
+              <th>No</th>
+              <th>Tanggal</th>
               <th>Nama Barang</th>
-              <th style="width:90px">Jenis</th>
-              <th style="width:80px;text-align:center">Jumlah</th>
+              <th>Jenis</th>
+              <th style="text-align:center">Jumlah</th>
               <th>Keterangan</th>
             </tr>
           </thead>
@@ -672,20 +690,21 @@ function renderLaporan() {
               ? `<tr><td colspan="6"><div class="empty-state"><i class="ti ti-notes"></i><p>Tidak ada transaksi</p></div></td></tr>`
               : transFiltered.map((t, i) => {
                   const tglObj2 = t.tgl ? new Date(t.tgl) : null;
-                  const tglFmt2 = tglObj2 ? tglObj2.toLocaleDateString('id-ID', {day:'2-digit',month:'short',year:'numeric'}) : '—';
+                  const tglFmt2 = tglObj2 ? tglObj2.toLocaleDateString('id-ID', {day:'2-digit',month:'short',year:'numeric'}) : '\u2014';
                   const waktu2  = tglObj2 && t.tgl.length > 10 ? t.tgl.slice(11,16) : '';
+                  const ketTrunc2 = t.ket && t.ket.length > 50 ? t.ket.slice(0,50) + '\u2026' : (t.ket || '\u2014');
                   return `
                 <tr>
                   <td style="color:var(--text-3);font-family:var(--font-mono);font-size:11px;text-align:center">${i+1}</td>
-                  <td>
+                  <td style="white-space:nowrap">
                     <span style="font-size:12px;color:var(--text-1);font-weight:500">${tglFmt2}</span>${waktu2 ? `<br><span style="font-size:10px;color:var(--text-3);font-family:var(--font-mono)">${waktu2}</span>` : ''}
                   </td>
-                  <td class="td-name">${t.nama}</td>
+                  <td class="td-name" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${t.nama}">${t.nama}</td>
                   <td><span class="badge ${t.type === 'masuk' ? 'badge-masuk' : 'badge-keluar'}">
-                    ${t.type === 'masuk' ? '↓ Masuk' : '↑ Keluar'}
+                    ${t.type === 'masuk' ? '\u2193 Masuk' : '\u2191 Keluar'}
                   </span></td>
                   <td style="text-align:center" class="td-stock">${t.jumlah}</td>
-                  <td style="color:var(--text-2)">${t.ket || '—'}</td>
+                  <td style="color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${t.ket || ''}">${ketTrunc2}</td>
                 </tr>`;
                 }).join('')}
           </tbody>
