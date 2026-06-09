@@ -18,4 +18,30 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # Blokir akses ke file .env dan file sensitif via URL traversal
+    RewriteRule ^\.env - [F,L]
+    RewriteRule .*\.env$ - [F,L]
 </IfModule>
+
+# ─── Security Headers (Apache-level backup) ──────────────
+<IfModule mod_headers.c>
+    # Sembunyikan versi PHP dan server
+    Header always unset X-Powered-By
+    Header always unset Server
+
+    # Cegah MIME sniffing (backup dari Laravel middleware)
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Cegah Clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Batasi referrer info
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Nonaktifkan directory listing
+Options -Indexes
+
+# Sembunyikan signature Apache
+ServerSignature Off

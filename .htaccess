@@ -1,0 +1,19 @@
+# Blokir akses langsung ke file sensitif di root project
+# File ini melindungi: .env, composer.json, dll
+
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "(^\.env|composer\.(json|lock)|package\.json|phpunit\.xml|artisan|\.gitignore|\.gitattributes)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Blokir akses ke direktori sensitif
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(storage|bootstrap|config|database|resources|routes|tests|vendor)/ - [F,L]
+    RewriteRule ^(app)/ - [F,L]
+</IfModule>
