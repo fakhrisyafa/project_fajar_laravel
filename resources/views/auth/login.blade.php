@@ -46,36 +46,48 @@
       max-width: 400px;
       padding: 20px;
     }
+    .theme-switcher {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+    .theme-btn {
+      background: var(--bg-2);
+      border: 1px solid var(--border-md);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: var(--text-2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-sans);
+      transition: all 0.2s;
+    }
+    .theme-btn:hover {
+      background: var(--bg-3);
+      color: var(--text-0);
+    }
     .login-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 32px;
       justify-content: center;
+      margin-bottom: 32px;
     }
-    .login-brand-icon {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--accent), #6366f1);
-      border-radius: var(--radius-md);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      color: #fff;
-      box-shadow: 0 0 24px var(--accent-glow);
+    .login-brand img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.18));
     }
-    .login-brand-text .title {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--text-0);
-    }
-    .login-brand-text .sub {
-      display: block;
-      font-size: 11px;
-      color: var(--text-3);
-      letter-spacing: 0.04em;
-    }
+    .login-brand-bg {
+    background: transparent;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+   }
     .login-card {
       background: var(--bg-1);
       border: 1px solid var(--border-md);
@@ -148,13 +160,19 @@
 </head>
 <body class="login-page">
   <div class="login-wrap">
+
+    {{-- Theme Switcher --}}
+    <div class="theme-switcher">
+      <button class="theme-btn" onclick="toggleTheme()" id="theme-toggle-btn">
+        <i class="ti ti-moon" id="theme-icon"></i>
+        <span id="theme-label">Dark</span>
+      </button>
+    </div>
+
+    {{-- Logo Fajar Technos --}}
     <div class="login-brand">
-      <div class="login-brand-icon">
-        <i class="ti ti-building-warehouse"></i>
-      </div>
-      <div class="login-brand-text">
-        <span class="title">Fajar Technos</span>
-        <span class="sub">Manajemen Aset</span>
+      <div class="login-brand-bg">
+        <img src="{{ asset('assets/images/logo1.png') }}" alt="Fajar Technos" />
       </div>
     </div>
 
@@ -200,7 +218,28 @@
   </div>
 
   <script>
-    // Cek jika sudah login, langsung redirect
+    // ── Theme ──────────────────────────────────────────
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeBtn(savedTheme);
+
+    function updateThemeBtn(theme) {
+      const icon  = document.getElementById('theme-icon');
+      const label = document.getElementById('theme-label');
+      if (!icon) return;
+      icon.className    = theme === 'dark' ? 'ti ti-moon' : 'ti ti-sun';
+      label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next    = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeBtn(next);
+    }
+
+    // ── Auth check ────────────────────────────────────
     (async () => {
       try {
         const res  = await fetch('/auth/check');
@@ -209,10 +248,7 @@
       } catch (e) {}
     })();
 
-    // Apply saved theme
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-
+    // ── Password toggle ───────────────────────────────
     function togglePass() {
       const input = document.getElementById('password');
       const icon  = document.getElementById('pass-eye');
@@ -225,6 +261,7 @@
       }
     }
 
+    // ── Login ─────────────────────────────────────────
     function showError(msg) {
       const box = document.getElementById('error-box');
       document.getElementById('error-msg').textContent = msg;
@@ -255,9 +292,9 @@
         const res  = await fetch('/login', {
           method:  'POST',
           headers: {
-            'Content-Type':  'application/json',
-            'Accept':        'application/json',
-            'X-CSRF-TOKEN':  '{{ csrf_token() }}',
+            'Content-Type': 'application/json',
+            'Accept':       'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
           },
           body: JSON.stringify({ username, password }),
         });
