@@ -118,7 +118,7 @@ function renderBarang() {
     </div>
 
     <div class="table-wrap">
-      <table style="table-layout:auto">
+      <table class="tbl-barang" style="table-layout:auto">
         <thead>
           <tr>
             <th style="width:44px"></th>
@@ -154,7 +154,9 @@ function renderBarang() {
               <td class="td-stock" style="text-align:center">${i.stok}</td>
               <td class="td-unit">${i.satuan}</td>
               <td style="text-align:center"><span class="badge ${kondCls[i.kondisi]}">${i.kondisi}</span></td>
-              <td title="${i.lokasi}" style="color:var(--text-2)">${i.lokasi}</td>
+              <td title="${i.lokasi || ''}" style="color:${i.lokasi ? 'var(--text-2)' : 'var(--text-3)'}">
+                ${i.lokasi || '—'}
+              </td>
              <td>
   ${window.userRole === 'Admin' ? `
   <div class="act-wrap">
@@ -304,14 +306,14 @@ function renderTrans(type) {
     </div>
 
     <div class="table-wrap">
-      <table style="table-layout:fixed;width:100%">
+      <table class="tbl-trans tbl-desktop" style="table-layout:fixed;width:100%">
         <colgroup>
           <col style="width:48px">
-          <col style="width:148px">
-          <col style="min-width:160px">
-          <col style="width:88px">
-          <col style="width:138px">
-          <col style="width:200px">
+          <col style="width:130px">
+          <col>
+          <col style="width:80px">
+          <col style="width:130px">
+          <col style="width:180px">
           <col style="width:52px">
         </colgroup>
         <thead>
@@ -378,6 +380,71 @@ function renderTrans(type) {
           }
         </tbody>
       </table>
+
+      <!-- Mobile Horizontal Scroll Table -->
+      <div class="tbl-mobile" style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+        ${data.length === 0
+          ? `<div class="empty-state"><i class="ti ti-notes"></i><p>Belum ada ${label.toLowerCase()}</p></div>`
+          : `<table style="width:100%;border-collapse:collapse;min-width:480px;font-size:13px;table-layout:fixed">
+              <colgroup>
+                <col style="width:110px">
+                <col>
+                <col style="width:100px">
+                <col style="width:60px">
+                <col style="width:36px">
+              </colgroup>
+              <thead>
+                <tr style="border-bottom:1px solid var(--border-md)">
+                  <th style="padding:8px 10px;text-align:left;font-weight:500;color:var(--text-2)">Tanggal</th>
+                  <th style="padding:8px 10px;text-align:left;font-weight:500;color:var(--text-2)">Nama Barang</th>
+                  <th style="padding:8px 10px;text-align:left;font-weight:500;color:var(--text-2)">Teknisi</th>
+                  <th style="padding:8px 10px;text-align:right;font-weight:500;color:var(--text-2)">Jumlah</th>
+                  <th style="padding:8px 10px;width:36px"></th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.map((t,i) => {
+                  const tglObj = t.tgl ? new Date(t.tgl) : null;
+                  const tglFmt = tglObj ? tglObj.toLocaleDateString('id-ID', {day:'2-digit',month:'short',year:'numeric'}) : '\u2014';
+                  const waktu  = tglObj && t.tgl.length > 10 ? t.tgl.slice(11,16) : '';
+                  return `
+                <tr onclick="bukaDetailTrans(${t.id})" style="border-bottom:0.5px solid var(--border);cursor:pointer">
+                  <td style="padding:10px 10px;vertical-align:middle">
+                    <div style="font-size:12px;font-weight:500;color:var(--text-1)">${tglFmt}</div>
+                    ${waktu ? `<div style="font-size:10px;color:var(--text-3);font-family:var(--font-mono)">${waktu}</div>` : ''}
+                  </td>
+                  <td style="padding:10px 10px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                    <div style="display:flex;align-items:center;gap:7px">
+                      <div style="width:7px;height:7px;border-radius:50%;background:${accentClr};flex-shrink:0"></div>
+                      <span style="font-weight:500;color:var(--text-0);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.nama}</span>
+                    </div>
+                  </td>
+                  <td style="padding:10px 10px;vertical-align:middle;overflow:hidden">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0">
+                        ${t.dicatat_oleh ? t.dicatat_oleh.charAt(0).toUpperCase() : '?'}
+                      </div>
+                      <span style="font-size:12px;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.dicatat_oleh || '\u2014'}</span>
+                    </div>
+                  </td>
+                  <td style="padding:10px 10px;text-align:right;vertical-align:middle">
+                    <span style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:${accentClr}">
+                      ${type === 'masuk' ? '+' : '-'}${t.jumlah}
+                    </span>
+                  </td>
+                  <td style="padding:10px 8px;text-align:center;vertical-align:middle">
+                    ${window.userRole === 'Admin' ? `
+                    <button class="act-btn del" title="Hapus"
+                      onclick="event.stopPropagation();hapusTrans(${t.id}, '${t.nama}', ${t.jumlah})">
+                      <i class="ti ti-trash"></i>
+                    </button>` : ''}
+                  </td>
+                </tr>`;
+                }).join('')}
+              </tbody>
+            </table>`
+        }
+      </div>
     </div>`;
 }
 
@@ -695,7 +762,6 @@ function renderLaporan() {
           <input type="date" class="form-input" style="width:160px;font-size:12px"
             value="${filterSampai}" onchange="window._laporanSampai=this.value;render()" />
         </div>` : ''}
-        </div>
       </div>
       <div class="table-wrap">
         <table style="table-layout:fixed;width:100%">
@@ -1105,20 +1171,20 @@ function updateBadgeStokRendah() {
   navBarang.style.position = 'relative';
   navBarang.style.overflow = 'visible';
 
-    navBarang.insertAdjacentHTML('beforeend', `
-        <span id="badge-stok-rendah"
-          style="position:absolute;top:4px;right:4px;left:auto;
-                background:var(--red);color:#fff;
-                font-size:9px;font-weight:700;
-                width:fit-content;height:16px;
-                border-radius:8px;padding:0 4px;
-                display:flex;align-items:center;justify-content:center;
-                font-family:var(--font-mono);
-                box-shadow:0 0 8px rgba(239,68,68,0.5);
-                animation:pulse-badge 2s infinite;
-                pointer-events:none;
-                z-index:10">
-          ${jumlah}
-        </span>
-      `);
+  navBarang.insertAdjacentHTML('beforeend', `
+    <span id="badge-stok-rendah"
+      style="position:absolute;top:4px;right:4px;left:auto;
+            background:var(--red);color:#fff;
+            font-size:9px;font-weight:700;
+            width:fit-content;height:16px;
+            border-radius:8px;padding:0 4px;
+            display:flex;align-items:center;justify-content:center;
+            font-family:var(--font-mono);
+            box-shadow:0 0 8px rgba(239,68,68,0.5);
+            animation:pulse-badge 2s infinite;
+            pointer-events:none;
+            z-index:10">
+      ${jumlah}
+    </span>
+  `);
 }
