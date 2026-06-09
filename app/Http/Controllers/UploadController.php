@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
 {
@@ -18,6 +20,12 @@ class UploadController extends Controller
 
         if (!$id || !$file) {
             return response()->json(['error' => 'Data tidak lengkap'], 400);
+        }
+
+        // Pastikan item ada sebelum upload
+        $item = Item::find(intval($id));
+        if (!$item) {
+            return response()->json(['error' => 'Barang tidak ditemukan'], 404);
         }
 
         // Batas ukuran: 2MB
@@ -38,11 +46,19 @@ class UploadController extends Controller
             return response()->json(['error' => 'Format tidak didukung'], 400);
         }
 
-        $filename = 'item_' . intval($id) . '.' . $ext;
-        $file->move(public_path('uploads'), $filename);
+        // Gunakan UUID agar filename tidak bisa ditebak/dienumerasi
+        $filename    = 'item_' . Str::uuid() . '.' . $ext;
+        $uploadPath  = public_path('uploads');
+
+        // Hapus foto lama jika ada, sebelum simpan yang baru
+        if ($item->foto && file_exists($uploadPath . '/' . $item->foto)) {
+            @unlink($uploadPath . '/' . $item->foto);
+        }
+
+        $file->move($uploadPath, $filename);
 
         // Update kolom foto di tabel items
-        Item::where('id', intval($id))->update(['foto' => $filename]);
+        $item->update(['foto' => $filename]);
 
         return response()->json(['foto' => $filename]);
     }

@@ -37,6 +37,21 @@ class TransactionController extends Controller
             : now()->toDateTimeString();
         $ket     = $request->input('ket', '');
 
+        // ─── Validasi Input ─────────────────────────────────────
+        // Whitelist tipe transaksi — mencegah nilai sembarang masuk ke query
+        if (!in_array($type, ['masuk', 'keluar'], true)) {
+            return response()->json(['error' => 'Tipe transaksi tidak valid'], 400);
+        }
+        if (!$item_id || $item_id < 1) {
+            return response()->json(['error' => 'Item tidak valid'], 400);
+        }
+        if ($jumlah < 1) {
+            return response()->json(['error' => 'Jumlah harus minimal 1'], 400);
+        }
+        if (strlen($ket) > 500) {
+            return response()->json(['error' => 'Keterangan terlalu panjang (max 500 karakter)'], 400);
+        }
+
         // Cek stok jika keluar
         if ($type === 'keluar') {
             $item = Item::find($item_id);

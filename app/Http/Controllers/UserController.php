@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -38,6 +39,15 @@ class UserController extends Controller
 
         if (!$nama || !$username || !$password) {
             return response()->json(['error' => 'Nama, username, dan password wajib diisi'], 400);
+        }
+        if (strlen($password) < 8) {
+            return response()->json(['error' => 'Password minimal 8 karakter'], 400);
+        }
+        if (strlen($username) > 50) {
+            return response()->json(['error' => 'Username terlalu panjang (max 50 karakter)'], 400);
+        }
+        if (strlen($nama) > 100) {
+            return response()->json(['error' => 'Nama terlalu panjang (max 100 karakter)'], 400);
         }
         if (!in_array($role, $this->allowedRoles)) {
             return response()->json(['error' => 'Role tidak valid'], 400);
@@ -102,8 +112,8 @@ class UserController extends Controller
         if (!$id || !$pass) {
             return response()->json(['error' => 'Data tidak lengkap'], 400);
         }
-        if (strlen($pass) < 6) {
-            return response()->json(['error' => 'Password minimal 6 karakter'], 400);
+        if (strlen($pass) < 8) {
+            return response()->json(['error' => 'Password minimal 8 karakter'], 400);
         }
 
         $user = User::find($id);
@@ -126,6 +136,12 @@ class UserController extends Controller
             return response()->json(['error' => 'Data tidak lengkap'], 400);
         }
 
+        // Pastikan user ada sebelum upload
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json(['error' => 'User tidak ditemukan'], 404);
+        }
+
         if ($file->getSize() > 2 * 1024 * 1024) {
             return response()->json(['error' => 'Ukuran file maksimal 2MB'], 400);
         }
@@ -135,12 +151,23 @@ class UserController extends Controller
             return response()->json(['error' => 'File bukan gambar valid'], 400);
         }
 
-        $ext      = strtolower($file->getClientOriginalExtension());
-        $filename = 'avatar_' . $id . '.' . $ext;
-        $file->move(public_path('uploads/avatars'), $filename);
+        $ext         = strtolower($file->getClientOriginalExtension());
+        $allowedExts = ['jpg', 'jpeg', 'png', 'webp'];
+        if (!in_array($ext, $allowedExts)) {
+            return response()->json(['error' => 'Format tidak didukung'], 400);
+        }
 
-        $user = User::find($id);
-        if ($user) $user->update(['foto' => $filename]);
+        // Gunakan UUID agar filename avatar tidak bisa ditebak
+        $filename   = 'avatar_' . Str::uuid() . '.' . $ext;
+        $avatarPath = public_path('uploads/avatars');
+
+        // Hapus avatar lama jika ada
+        if ($user->foto && file_exists($avatarPath . '/' . $user->foto)) {
+            @unlink($avatarPath . '/' . $user->foto);
+        }
+
+        $file->move($avatarPath, $filename);
+        $user->update(['foto' => $filename]);
 
         return response()->json(['ok' => true, 'foto' => $filename]);
     }

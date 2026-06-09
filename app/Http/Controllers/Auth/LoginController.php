@@ -61,7 +61,6 @@ class LoginController extends Controller
             'nama'      => $user->nama,
             'role'      => $user->role,
             'username'  => $user->username,
-            'csrf_token' => csrf_token(),
         ]);
     }
 
@@ -76,7 +75,6 @@ class LoginController extends Controller
                 'nama'       => session('nama'),
                 'role'       => session('role'),
                 'username'   => session('username'),
-                'csrf_token' => csrf_token(),
             ]);
         }
         return response()->json(['loggedIn' => false]);

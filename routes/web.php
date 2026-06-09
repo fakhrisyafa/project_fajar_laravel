@@ -22,7 +22,7 @@ Route::get('/login', fn () => view('auth.login'))->name('login.page');
 // Auth API
 Route::post('/login',       [LoginController::class, 'login'])->name('login');
 Route::post('/logout',      [LoginController::class, 'logout'])->name('logout');
-Route::get('/auth/check',   [LoginController::class, 'check'])->name('auth.check');
+Route::get('/auth/check',   [LoginController::class, 'check'])->middleware('throttle:30,1')->name('auth.check');
 
 // ─── Protected Routes (session.auth) ─────────────────────────────────────
 
@@ -53,5 +53,5 @@ Route::middleware('session.auth')->group(function () {
     });
 
     // ─── Upload API ───────────────────────────────────────
-    Route::post('/api/upload',        [UploadController::class, 'uploadItemPhoto'])->name('api.upload');
+    Route::post('/api/upload',        [UploadController::class, 'uploadItemPhoto'])->middleware('throttle:20,1')->name('api.upload');
 });

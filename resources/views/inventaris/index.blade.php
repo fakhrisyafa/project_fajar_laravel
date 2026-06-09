@@ -415,8 +415,6 @@
 
         window.userRole = role;
 
-        if (data.csrf_token) localStorage.setItem('csrf_token', data.csrf_token);
-
         await loadData();
 
         if (role !== 'Admin') {

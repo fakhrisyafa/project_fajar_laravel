@@ -154,7 +154,8 @@ async function saveBarang() {
 
   const method = editId ? 'PUT' : 'POST';
   const url    = editId ? `/api/items/${editId}` : '/api/items';
-  const csrf   = document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || '';
+  const csrf   = document.querySelector('meta[name="csrf-token"]')?.content || '';
+  if (!csrf) { toast('Token keamanan tidak ditemukan, coba refresh halaman', 'error'); return; }
   const res    = await fetch(url, {
     method,
     headers: {
@@ -172,7 +173,7 @@ async function saveBarang() {
     const form   = new FormData();
     form.append('id',   itemId);
     form.append('foto', fotoFile);
-    await fetch('/api/upload', { method: 'POST', headers: { 'X-CSRF-TOKEN': csrf }, body: form });
+    await fetch('/api/upload', { method: 'POST', headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '' }, body: form });
   }
 
   await loadData();
@@ -188,7 +189,7 @@ async function hapus(id) {
   konfirm(`Hapus barang "${item.nama}"? Tindakan ini tidak bisa dibatalkan.`, async () => {
     await fetch(`/api/items/${id}`, {
   method: 'DELETE',
-  headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || '' }
+  headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '' }
 });
     await loadData();
     toast('Barang dihapus');
@@ -201,7 +202,7 @@ async function hapusTrans(id, nama, jumlah) {
   konfirm(`Hapus transaksi "${nama}" (${jumlah} unit)? Stok barang akan dikembalikan otomatis.`, async () => {
     const res = await fetch(`/api/trans/${id}`, {
   method: 'DELETE',
-  headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || '' }
+  headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '' }
 });
     const data = await res.json();
     if (!res.ok) { toast(data.error || 'Gagal menghapus', 'error'); return; }
@@ -265,7 +266,7 @@ async function saveTrans() {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || ''
+    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
   },
   body: JSON.stringify(data)
 });
@@ -389,7 +390,7 @@ async function uploadFoto(id, input) {
     form.append('id',   id);
     form.append('foto', croppedFile);
 
-    const csrf2 = document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || '';
+    const csrf2 = document.querySelector('meta[name="csrf-token"]')?.content || '';
     const res  = await fetch('/api/upload', { method: 'POST', headers: { 'X-CSRF-TOKEN': csrf2 }, body: form });
     const data = await res.json();
 
@@ -545,9 +546,10 @@ async function saveUser() {
   if (!id) {
     // Tambah baru
     if (!password) { toast('Password wajib diisi', 'error'); return; }
-    if (password.length < 6) { toast('Password minimal 6 karakter', 'error'); return; }
+    if (password.length < 8) { toast('Password minimal 8 karakter', 'error'); return; }
 
-    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || '';
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+    if (!csrfToken) { toast('Token keamanan tidak ditemukan, coba refresh halaman', 'error'); return; }
     const res  = await fetch('/api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
@@ -569,7 +571,8 @@ async function saveUser() {
 
   } else {
     // Edit
-    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || '';
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+    if (!csrfToken) { toast('Token keamanan tidak ditemukan, coba refresh halaman', 'error'); return; }
     const res  = await fetch(`/api/users/${parseInt(id)}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
@@ -608,13 +611,13 @@ async function saveResetPassword() {
   const pass = document.getElementById('rp-password').value;
 
   if (!pass) { toast('Password wajib diisi', 'error'); return; }
-  if (pass.length < 6) { toast('Password minimal 6 karakter', 'error'); return; }
+  if (pass.length < 8) { toast('Password minimal 8 karakter', 'error'); return; }
 
   const res  = await fetch('/api/users/password', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || '',
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
     },
     body: JSON.stringify({ id: parseInt(id), password: pass }),
   });
@@ -630,7 +633,7 @@ async function hapusUser(id, nama) {
   konfirm(`Hapus user "${nama}"? Tindakan ini tidak bisa dibatalkan.`, async () => {
     const res  = await fetch(`/api/users/${id}`, {
       method: 'DELETE',
-      headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || '' },
+      headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '' },
     });
     const data = await res.json();
     if (!res.ok) { toast(data.error, 'error'); return; }
@@ -656,13 +659,12 @@ async function doLogout() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || localStorage.getItem('csrf_token') || ''
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
       }
     });
     localStorage.removeItem('user_nama');
     localStorage.removeItem('user_role');
     localStorage.removeItem('user_username');
-    localStorage.removeItem('csrf_token');
     window.location.href = '/';
   }, { title: 'Keluar', ok: 'Ya, Keluar', danger: false });
 }
