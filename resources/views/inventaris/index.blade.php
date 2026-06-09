@@ -388,8 +388,10 @@
 
   <!-- Toast -->
   <div class="toast" id="toast">
-    <i class="ti ti-check-circle toast-icon"></i>
-    <span id="tmsg"></span>
+    <div class="toast-body">
+      <i class="ti ti-circle-check toast-icon"></i>
+      <span id="tmsg"></span>
+    </div>
   </div>
 
   <script src="{{ asset('js/utils.js') }}"></script>
@@ -415,6 +417,7 @@
 
         window.userRole = role;
 
+        showSkeleton(); // tampilkan skeleton loader sebelum data tiba
         await loadData();
 
         if (role !== 'Admin') {

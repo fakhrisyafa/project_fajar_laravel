@@ -21,18 +21,114 @@ document.addEventListener('click', function(e) {
 
 // ─── Toast ────────────────────────────────────────────────
 function toast(msg, type = 'success') {
-  const t   = document.getElementById('toast');
-  const msg_el = document.getElementById('tmsg');
-  msg_el.textContent = msg;
+  // Hapus toast lama jika masih ada
+  const old = document.getElementById('toast');
+  if (old) {
+    old.classList.remove('show');
+    clearTimeout(old._timer);
+  }
 
-  t.style.borderColor = type === 'error'
-    ? 'rgba(239,68,68,0.35)'
-    : 'rgba(34,197,94,0.35)';
-  t.style.color = type === 'error' ? 'var(--red)' : 'var(--green)';
+  const icons = {
+    success: 'ti-circle-check',
+    error:   'ti-circle-x',
+    warning: 'ti-alert-triangle',
+    info:    'ti-info-circle',
+  };
+  const colors = {
+    success: { border: 'rgba(34,197,94,0.35)',  color: 'var(--green)',  bg: 'rgba(34,197,94,0.06)' },
+    error:   { border: 'rgba(239,68,68,0.35)',  color: 'var(--red)',    bg: 'rgba(239,68,68,0.06)' },
+    warning: { border: 'rgba(245,158,11,0.35)', color: 'var(--amber)',  bg: 'rgba(245,158,11,0.06)' },
+    info:    { border: 'rgba(59,130,246,0.35)', color: 'var(--accent)', bg: 'rgba(59,130,246,0.06)' },
+  };
+
+  const c = colors[type] || colors.success;
+  const iconCls = icons[type] || icons.success;
+  const duration = 2800;
+
+  // Update konten
+  const t = document.getElementById('toast');
+  const iconEl = t.querySelector('.toast-icon');
+  const msgEl  = document.getElementById('tmsg');
+  let   progEl = t.querySelector('.toast-progress');
+
+  if (iconEl) iconEl.className = `ti ${iconCls} toast-icon`;
+  if (msgEl)  msgEl.textContent = msg;
+
+  t.style.borderColor     = c.border;
+  t.style.color           = c.color;
+  t.style.backgroundColor = `var(--bg-1)`;
+
+  // Progress bar
+  if (!progEl) {
+    progEl = document.createElement('div');
+    progEl.className = 'toast-progress';
+    t.appendChild(progEl);
+  }
+  progEl.style.background = c.color;
+  progEl.style.width = '100%';
+  progEl.style.transition = 'none';
 
   t.classList.add('show');
   clearTimeout(t._timer);
-  t._timer = setTimeout(() => t.classList.remove('show'), 2600);
+
+  // Mulai animasi progress bar
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      progEl.style.transition = `width ${duration}ms linear`;
+      progEl.style.width = '0%';
+    });
+  });
+
+  t._timer = setTimeout(() => {
+    t.classList.remove('show');
+  }, duration);
+}
+
+// ─── Animate Counter ──────────────────────────────────────
+function animateCounter(el, target, duration = 800) {
+  if (!el || isNaN(target)) return;
+  const start     = performance.now();
+  const startVal  = 0;
+  const easeOut   = t => 1 - Math.pow(1 - t, 3);
+
+  function step(now) {
+    const elapsed  = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const value    = Math.round(startVal + (target - startVal) * easeOut(progress));
+    el.textContent = value;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(step);
+}
+
+// ─── Skeleton Loader ──────────────────────────────────────
+function showSkeleton() {
+  const ca = document.getElementById('ca');
+  if (!ca) return;
+  const rows = Array(5).fill(0).map(() => `
+    <tr>
+      <td><div class="skel" style="width:60px"></div></td>
+      <td><div class="skel" style="width:140px"></div></td>
+      <td><div class="skel" style="width:90%;max-width:200px"></div></td>
+      <td><div class="skel" style="width:50px"></div></td>
+      <td><div class="skel" style="width:40px"></div></td>
+      <td><div class="skel" style="width:70px;border-radius:20px"></div></td>
+    </tr>`).join('');
+  ca.innerHTML = `
+    <div class="stats-grid">
+      ${Array(4).fill(0).map(() => `
+        <div class="stat-card" style="padding:18px 20px">
+          <div class="skel" style="width:38px;height:38px;border-radius:10px;margin-bottom:14px"></div>
+          <div class="skel" style="width:60px;height:28px;margin-bottom:8px"></div>
+          <div class="skel" style="width:80px;height:12px"></div>
+        </div>`).join('')}
+    </div>
+    <div class="table-wrap" style="margin-top:16px">
+      <table style="table-layout:fixed;width:100%">
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
 }
 
 // ─── Date ─────────────────────────────────────────────────

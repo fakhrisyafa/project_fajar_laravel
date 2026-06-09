@@ -3,6 +3,15 @@
  * Setiap halaman memiliki fungsi render-nya sendiri
  */
 
+// ─ Ikon per kategori────────────────────────────────────────
+const katIcon = {
+  'Perangkat Aktif':           'ti-cpu',
+  'Infrastruktur Fiber Optik': 'ti-antenna',
+  'Kabel Fiber Optik':         'ti-cable',
+  'Konektor & Aksesoris':      'ti-plug-connected',
+  'Perangkat Wireless':        'ti-wifi',
+};
+
 // ─── Data Barang ──────────────────────────────────────────
 function renderBarang() {
   let data = [...items];
@@ -38,26 +47,34 @@ function renderBarang() {
   const totalBaik  = items.filter(i => i.kondisi === 'Baik').length;
   const totalPerlu = items.filter(i => i.kondisi === 'Rusak').length;
 
+  // Jadwalkan animasi counter setelah DOM render
+  setTimeout(() => {
+    animateCounter(document.getElementById('sv-jenis'), items.length);
+    animateCounter(document.getElementById('sv-unit'),  totalStok);
+    animateCounter(document.getElementById('sv-baik'),  totalBaik);
+    animateCounter(document.getElementById('sv-rusak'), totalPerlu);
+  }, 60);
+
   return `
     <div class="stats-grid">
       <div class="stat-card blue">
         <div class="stat-icon blue"><i class="ti ti-packages"></i></div>
-        <div class="stat-value">${items.length}</div>
+        <div class="stat-value" id="sv-jenis">0</div>
         <div class="stat-label">Total Jenis</div>
       </div>
       <div class="stat-card green">
         <div class="stat-icon green"><i class="ti ti-stack"></i></div>
-        <div class="stat-value">${totalStok}</div>
+        <div class="stat-value" id="sv-unit">0</div>
         <div class="stat-label">Total Unit</div>
       </div>
       <div class="stat-card amber">
         <div class="stat-icon amber"><i class="ti ti-circle-check"></i></div>
-        <div class="stat-value">${totalBaik}</div>
+        <div class="stat-value" id="sv-baik">0</div>
         <div class="stat-label">Kondisi Baik</div>
       </div>
       <div class="stat-card red">
         <div class="stat-icon red"><i class="ti ti-alert-circle"></i></div>
-        <div class="stat-value">${totalPerlu}</div>
+        <div class="stat-value" id="sv-rusak">0</div>
         <div class="stat-label">Kondisi Rusak</div>
       </div>
     </div>
@@ -104,6 +121,7 @@ function renderBarang() {
       <table style="table-layout:auto">
         <thead>
           <tr>
+            <th style="width:44px"></th>
             <th style="width:90px">Kode</th>
             <th style="width:220px">Nama Barang</th>
             <th style="min-width:170px">Kategori</th>
@@ -116,17 +134,23 @@ function renderBarang() {
         </thead>
         <tbody>
           ${data.length === 0
-            ? `<tr><td colspan="8">
+            ? `<tr><td colspan="9">
                 <div class="empty-state">
                   <i class="ti ti-inbox"></i>
                   <p>Tidak ada barang ditemukan</p>
                 </div>
               </td></tr>`
-          : data.map(i => `
+          : data.map(i => {
+              const thumb = i.foto
+                ? `<img src="uploads/${i.foto}" alt="" style="width:32px;height:32px;border-radius:8px;object-fit:cover;border:1px solid var(--border);flex-shrink:0">`
+                : `<div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--bg-3),var(--bg-4));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text-3);flex-shrink:0">${i.nama.charAt(0).toUpperCase()}</div>`;
+              const katIc = katIcon[i.kat] || 'ti-tag';
+              return `
             <tr class="tr-clickable" onclick="bukaDetail(${i.id})">
+              <td style="padding:8px 10px 8px 14px">${thumb}</td>
               <td class="td-code">${i.kode}</td>
               <td class="td-name" title="${i.nama}">${i.nama}</td>
-              <td style="white-space:nowrap"><span class="badge ${katCls[i.kat] || 'badge-lain'}" title="${i.kat}">${i.kat}</span></td>
+              <td style="white-space:nowrap"><span class="badge ${katCls[i.kat] || 'badge-lain'}" title="${i.kat}"><i class="ti ${katIc}" style="font-size:11px"></i>${i.kat}</span></td>
               <td class="td-stock" style="text-align:center">${i.stok}</td>
               <td class="td-unit">${i.satuan}</td>
               <td style="text-align:center"><span class="badge ${kondCls[i.kondisi]}">${i.kondisi}</span></td>
@@ -142,7 +166,8 @@ function renderBarang() {
     </button>
   </div>` : '—'}
 </td>
-           </tr>`).join('')
+           </tr>`;
+            }).join('')
           }
         </tbody>
       </table>
@@ -200,23 +225,30 @@ function renderTrans(type) {
     : '—';
   const rata = data.length > 0 ? Math.round(total / data.length) : 0;
 
+  // Jadwalkan animasi counter setelah DOM render
+  setTimeout(() => {
+    animateCounter(document.getElementById(`sv-trans-count`), data.length);
+    animateCounter(document.getElementById(`sv-trans-total`), total);
+    animateCounter(document.getElementById(`sv-trans-rata`),  rata);
+  }, 60);
+
   return `
     <div class="stats-grid" style="grid-template-columns:repeat(4,1fr)">
       <div class="stat-card ${type === 'masuk' ? 'green' : 'red'}">
         <div class="stat-icon ${type === 'masuk' ? 'green' : 'red'}">
           <i class="ti ${iconName}"></i>
         </div>
-        <div class="stat-value">${data.length}</div>
+        <div class="stat-value" id="sv-trans-count">0</div>
         <div class="stat-label">Total Transaksi</div>
       </div>
       <div class="stat-card blue">
         <div class="stat-icon blue"><i class="ti ti-sum"></i></div>
-        <div class="stat-value">${total}</div>
+        <div class="stat-value" id="sv-trans-total">0</div>
         <div class="stat-label">Total Unit</div>
       </div>
       <div class="stat-card amber">
         <div class="stat-icon amber"><i class="ti ti-math-avg"></i></div>
-        <div class="stat-value">${rata}</div>
+        <div class="stat-value" id="sv-trans-rata">0</div>
         <div class="stat-label">Rata-rata / Transaksi</div>
       </div>
       <div class="stat-card purple">
