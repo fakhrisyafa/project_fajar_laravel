@@ -101,17 +101,17 @@ function renderBarang() {
     </div>
 
     <div class="table-wrap">
-      <table>
+      <table style="table-layout:auto">
         <thead>
           <tr>
-            <th style="width:88px">Kode</th>
-            <th style="width:200px">Nama Barang</th>
-            <th style="width:100px">Kategori</th>
-            <th style="width:70px">Stok</th>
+            <th style="width:90px">Kode</th>
+            <th style="width:220px">Nama Barang</th>
+            <th style="min-width:170px">Kategori</th>
+            <th style="width:60px;text-align:center">Stok</th>
             <th style="width:65px">Satuan</th>
-            <th style="width:110px">Kondisi</th>
+            <th style="width:80px;text-align:center">Kondisi</th>
             <th style="width:110px">Lokasi</th>
-            <th style="width:80px">Aksi</th>
+            <th style="width:70px">Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -126,10 +126,10 @@ function renderBarang() {
             <tr class="tr-clickable" onclick="bukaDetail(${i.id})">
               <td class="td-code">${i.kode}</td>
               <td class="td-name" title="${i.nama}">${i.nama}</td>
-              <td><span class="badge ${katCls[i.kat] || 'badge-lain'}">${i.kat}</span></td>
-              <td class="td-stock">${i.stok}</td>
+              <td style="white-space:nowrap"><span class="badge ${katCls[i.kat] || 'badge-lain'}" title="${i.kat}">${i.kat}</span></td>
+              <td class="td-stock" style="text-align:center">${i.stok}</td>
               <td class="td-unit">${i.satuan}</td>
-              <td><span class="badge ${kondCls[i.kondisi]}">${i.kondisi}</span></td>
+              <td style="text-align:center"><span class="badge ${kondCls[i.kondisi]}">${i.kondisi}</span></td>
               <td title="${i.lokasi}" style="color:var(--text-2)">${i.lokasi}</td>
              <td>
   ${window.userRole === 'Admin' ? `
