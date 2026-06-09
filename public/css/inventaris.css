@@ -3,7 +3,6 @@
    ============================================ */
 
 :root {
-  
   --bg-0: #090b0e;
   --bg-1: #10131a;
   --bg-2: #171b24;
@@ -85,6 +84,7 @@ body {
   grid-template-columns: var(--sidebar-w) 1fr;
   height: 100vh;
   overflow: hidden;
+  transition: grid-template-columns 0.3s ease;
 }
 
 /* ============================
@@ -111,45 +111,22 @@ body {
   opacity: 0.5;
 }
 
-.logo {
+/* ============================
+   SIDEBAR HAMBURGER AREA
+   ============================ */
+
+.sidebar-hamburger {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 20px 18px;
+  justify-content: center;
+  padding: 14px;
   border-bottom: 1px solid var(--border);
-}
-
-.logo-icon {
-  width: 36px; height: 36px;
-  background: linear-gradient(135deg, var(--accent), #6366f1);
-  border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  color: #fff;
-  box-shadow: 0 0 16px var(--accent-glow);
   flex-shrink: 0;
 }
 
-.logo-icon:hover {
-  box-shadow: 0 0 24px var(--accent-glow);
-  transition: box-shadow 0.3s ease;
-}
-
-.logo-title {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--text-0);
-}
-
-.logo-sub {
-  display: block;
-  font-size: 10px;
-  color: var(--text-3);
-  letter-spacing: 0.04em;
-}
+/* ============================
+   NAV
+   ============================ */
 
 .nav {
   flex: 1;
@@ -255,6 +232,10 @@ body {
   background: var(--bg-0);
 }
 
+/* ============================
+   TOPBAR (logo ada di sini)
+   ============================ */
+
 .topbar {
   height: var(--topbar-h);
   background: var(--bg-1);
@@ -266,6 +247,27 @@ body {
   flex-shrink: 0;
   gap: 16px;
   backdrop-filter: blur(8px);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.topbar-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.topbar-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border-md);
+  flex-shrink: 0;
 }
 
 .page-title {
@@ -620,7 +622,6 @@ tbody tr:hover td {
 .td-unit  { font-size: 11px; color: var(--text-3); }
 .td-date  { white-space: nowrap; font-size: 12px; color: var(--text-1); font-weight: 500; }
 
-/* Thumbnail foto di tabel */
 tbody td:has(img) {
   padding: 6px 8px 6px 14px !important;
   overflow: visible;
@@ -631,7 +632,6 @@ tbody tr:hover img {
   transition: transform 0.15s ease;
 }
 
-/* Baris tabel bisa diklik */
 .tr-clickable { cursor: pointer; }
 .tr-clickable:hover td { background: var(--bg-3) !important; }
 
@@ -975,25 +975,19 @@ tbody tr:hover img {
    SIDEBAR COLLAPSE
    ============================ */
 
-.app { transition: grid-template-columns 0.3s ease; }
-
 .app.sidebar-collapsed { grid-template-columns: 60px 1fr; }
 .app.sidebar-collapsed .sidebar { width: 60px; }
 
-.app.sidebar-collapsed .logo-text,
 .app.sidebar-collapsed .nav-section-label,
 .app.sidebar-collapsed .nav-item span:not(.nav-icon),
 .app.sidebar-collapsed .nav-count,
 .app.sidebar-collapsed .user-info,
 .app.sidebar-collapsed .sidebar-footer button { display: none; }
 
-.app.sidebar-collapsed .logo { justify-content: center; padding: 20px 0; }
-
 .app.sidebar-collapsed .nav-item {
   justify-content: center;
   padding: 10px 0;
   border-left: 2px solid transparent;
-  position: relative;
 }
 
 .app.sidebar-collapsed .nav-item.active { border-left-color: var(--accent); }
@@ -1102,11 +1096,14 @@ tbody .skel { margin: 2px 0; }
 
   .sidebar::before { display: none; }
 
-  .logo,
+  .sidebar-hamburger,
   .nav-section-label,
   .nav-count,
   .sidebar-footer,
   #sidebar-toggle { display: none !important; }
+
+  .topbar-logo { height: 24px; }
+  .topbar-divider { display: none; }
 
   .nav {
     display: flex;
@@ -1172,7 +1169,7 @@ tbody .skel { margin: 2px 0; }
     border-bottom: 1px solid var(--border);
   }
 
-  .topbar-left { display: flex; align-items: center; flex: 1; min-width: 0; }
+  .topbar-left { display: flex; align-items: center; flex: 1; min-width: 0; gap: 10px; }
   .page-meta { min-width: 0; }
   .page-title { font-size: 15px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .page-desc { display: none; }
@@ -1228,20 +1225,18 @@ tbody .skel { margin: 2px 0; }
   thead th { font-size: 10px; padding: 9px 10px; }
   tbody td { padding: 10px 10px; font-size: 12px; }
 
-/* Sembunyikan kolom tidak penting tabel Transaksi di mobile */
-.tbl-trans thead th:nth-child(5),
-.tbl-trans thead th:nth-child(6),
-.tbl-trans thead th:nth-child(7),
-.tbl-trans tbody td:nth-child(5),
-.tbl-trans tbody td:nth-child(6),
-.tbl-trans tbody td:nth-child(7) {
-  display: none !important;
-  width: 0 !important;
-  padding: 0 !important;
-}
+  .tbl-trans thead th:nth-child(5),
+  .tbl-trans thead th:nth-child(6),
+  .tbl-trans thead th:nth-child(7),
+  .tbl-trans tbody td:nth-child(5),
+  .tbl-trans tbody td:nth-child(6),
+  .tbl-trans tbody td:nth-child(7) {
+    display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+  }
 
   tbody tr:active td { background: rgba(59,130,246,0.07) !important; transition: none; }
-
   tbody td img { width: 28px !important; height: 28px !important; }
 
   .modal-backdrop { padding: 0; align-items: flex-end; }

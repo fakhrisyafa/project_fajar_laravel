@@ -18,27 +18,22 @@
 
 <body>
   <div class="app" id="app">
+
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
 
-      <div class="logo">
-        <div class="logo-icon"><i class="ti ti-building-warehouse"></i></div>
-        <div class="logo-text">
-          <span class="logo-title">Fajar Technos</span>
-          <span class="logo-sub">Manajemen Aset</span>
-        </div>
-      </div>
-
-      <button onclick="toggleSidebar()" id="sidebar-toggle"
-        style="width:100%; background:none; border:none; border-bottom:1px solid var(--border);
-               padding:8px; color:var(--text-3); cursor:pointer; display:flex;
-               align-items:center; justify-content:center;
-               transition:all 0.15s;"
+      <!-- Tombol Hamburger -->
+      <div class="sidebar-hamburger">
+        <button onclick="toggleSidebar()" id="sidebar-toggle"
+          style="background:none; border:1px solid var(--border); border-radius:var(--radius-md);
+                 width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+                 color:var(--text-2); cursor:pointer; transition:all 0.15s;"
           onmouseover="this.style.color='var(--text-0)'"
-          onmouseout="this.style.color='var(--text-3)'"
+          onmouseout="this.style.color='var(--text-2)'"
           title="Toggle Sidebar">
           <i class="ti ti-menu-2" id="sidebar-toggle-icon"></i>
         </button>
+      </div>
 
       <nav class="nav">
         <div class="nav-section">
@@ -101,6 +96,12 @@
     <div class="main">
       <header class="topbar">
         <div class="topbar-left">
+          <img
+            src="{{ asset('assets/images/logo1.png') }}"
+            alt="Fajar Technos"
+            class="topbar-logo"
+          />
+          <div class="topbar-divider"></div>
           <div class="page-meta">
             <h1 class="page-title" id="ptitle">Data Barang</h1>
             <p class="page-desc" id="pbread">Kelola semua aset kantor</p>
@@ -125,6 +126,7 @@
 
       <div class="content" id="ca"></div>
     </div>
+
   </div>
 
   <!-- Modal Barang -->
@@ -417,7 +419,7 @@
 
         window.userRole = role;
 
-        showSkeleton(); // tampilkan skeleton loader sebelum data tiba
+        showSkeleton();
         await loadData();
 
         if (role !== 'Admin') {
@@ -449,7 +451,6 @@
       }
     })();
 
-    // Cek sesi setiap 5 menit
     setInterval(async () => {
       try {
         const res  = await fetch('/auth/check');
