@@ -121,7 +121,6 @@ function renderBarang() {
       <table class="tbl-barang" style="table-layout:auto">
         <thead>
           <tr>
-            <th style="width:44px"></th>
             <th style="width:90px">Kode</th>
             <th style="width:220px">Nama Barang</th>
             <th style="min-width:170px">Kategori</th>
@@ -147,7 +146,6 @@ function renderBarang() {
               const katIc = katIcon[i.kat] || 'ti-tag';
               return `
             <tr class="tr-clickable" onclick="bukaDetail(${i.id})">
-              <td style="padding:8px 10px 8px 14px">${thumb}</td>
               <td class="td-code">${i.kode}</td>
               <td class="td-name" title="${i.nama}">${i.nama}</td>
               <td style="white-space:nowrap"><span class="badge ${katCls[i.kat] || 'badge-lain'}" title="${i.kat}"><i class="ti ${katIc}" style="font-size:11px"></i>${i.kat}</span></td>
