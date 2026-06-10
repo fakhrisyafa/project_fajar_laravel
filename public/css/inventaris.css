@@ -119,10 +119,52 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px;
+  width: 100%;
+  padding: 14px 0;
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 }
+
+/* ============================
+   HAMBURGER BUTTON
+   ============================ */
+
+#sidebar-toggle {
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+  margin: 0 auto;
+}
+
+#sidebar-toggle:hover { background: var(--bg-2); }
+
+#hb-1, #hb-2, #hb-3 {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--text-2);
+  border-radius: 2px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  margin: 0;
+}
+
+#sidebar-toggle:hover #hb-1,
+#sidebar-toggle:hover #hb-2,
+#sidebar-toggle:hover #hb-3 {
+  background: var(--text-0);
+}
+
 
 /* ============================
    NAV
@@ -233,7 +275,7 @@ body {
 }
 
 /* ============================
-   TOPBAR (logo ada di sini)
+   TOPBAR
    ============================ */
 
 .topbar {
@@ -983,6 +1025,11 @@ tbody tr:hover img {
 .app.sidebar-collapsed .nav-count,
 .app.sidebar-collapsed .user-info,
 .app.sidebar-collapsed .sidebar-footer button { display: none; }
+
+.app.sidebar-collapsed .sidebar-hamburger {
+  padding: 14px 0;
+  justify-content: center;
+}
 
 .app.sidebar-collapsed .nav-item {
   justify-content: center;

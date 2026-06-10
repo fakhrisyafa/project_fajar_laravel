@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Inventaris Kantor — Fajar Technos</title>
-  <link rel="stylesheet" href="{{ asset('css/inventaris.css') }}" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <script src="{{ asset('js/data.js') }}"></script>
-</head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <title>Inventaris Kantor — Fajar Technos</title>
+
+    {{-- Favicon --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('public/favicon.png') }}">
+
+    {{-- Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    {{-- CSS --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/inventaris.css') }}" />
+
+    {{-- JS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="{{ asset('js/data.js') }}"></script>
+</head>
 <body>
   <div class="app" id="app">
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
 
-      <!-- Tombol Hamburger -->
-      <div class="sidebar-hamburger">
-        <button onclick="toggleSidebar()" id="sidebar-toggle"
-          style="background:none; border:1px solid var(--border); border-radius:var(--radius-md);
-                 width:36px; height:36px; display:flex; align-items:center; justify-content:center;
-                 color:var(--text-2); cursor:pointer; transition:all 0.15s;"
-          onmouseover="this.style.color='var(--text-0)'"
-          onmouseout="this.style.color='var(--text-2)'"
-          title="Toggle Sidebar">
-          <i class="ti ti-menu-2" id="sidebar-toggle-icon"></i>
-        </button>
-      </div>
+      <!-- Hamburger di sini -->
+      <button onclick="toggleSidebar()" id="sidebar-toggle" title="Toggle Sidebar">
+        <span id="hb-1"></span>
+        <span id="hb-2"></span>
+        <span id="hb-3"></span>
+      </button>
 
       <nav class="nav">
         <div class="nav-section">
@@ -441,9 +446,6 @@
 
         if (localStorage.getItem('sidebar-collapsed') === '1') {
           document.getElementById('app').classList.add('sidebar-collapsed');
-          const btn = document.getElementById('sidebar-toggle');
-          btn.style.justifyContent = 'center';
-          btn.style.paddingRight   = '0';
         }
 
       } catch (e) {
