@@ -80,10 +80,7 @@
         <div class="container position-relative">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
-                    <div class="hero-badge">
-                        <div class="hero-badge-dot"></div>
-                        Network Active â€¢ 99.9% Uptime Guaranteed
-                    </div>
+
                     <h1 class="hero-title">Solusi Internet <span class="highlight">Cepat, Stabil,</span> dan Terpercaya
                     </h1>
                     <p class="hero-desc">Menyediakan layanan internet fiber optik, dedicated internet, dan solusi
@@ -201,7 +198,7 @@
                         <div class="service-icon-wrap blue"><i class="fas fa-network-wired"></i></div>
                         <h5>Fiber Optic Internet</h5>
                         <p>Koneksi internet berkecepatan tinggi melalui jaringan fiber optik hingga 1 Gbps untuk
-                            kebutuhan rumah dan bisnis.</p><a href="#" class="service-link">Selengkapnya <i
+                            kebutuhan rumah dan bisnis.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Fiber Optic Internet" class="service-link">Selengkapnya <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -210,7 +207,7 @@
                         <div class="service-icon-wrap cyan"><i class="fas fa-satellite-dish"></i></div>
                         <h5>Dedicated Internet</h5>
                         <p>Bandwidth dedicated simetris dengan SLA 99.9% untuk korporasi, data center, dan instansi yang
-                            membutuhkan koneksi stabil.</p><a href="#" class="service-link">Selengkapnya <i
+                            membutuhkan koneksi stabil.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Dedicated Internet" class="service-link">Selengkapnya <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -219,7 +216,7 @@
                         <div class="service-icon-wrap green"><i class="fas fa-wifi"></i></div>
                         <h5>Wireless Internet</h5>
                         <p>Solusi internet wireless untuk area yang belum terjangkau fiber optik, cocok untuk daerah
-                            terpencil dan lokasi sementara.</p><a href="#" class="service-link">Selengkapnya <i
+                            terpencil dan lokasi sementara.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Wireless Internet" class="service-link">Selengkapnya <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -228,7 +225,7 @@
                         <div class="service-icon-wrap purple"><i class="fas fa-building"></i></div>
                         <h5>Corporate Network</h5>
                         <p>Perancangan dan implementasi jaringan korporat, VPN, VLAN, dan infrastruktur IT untuk skala
-                            enterprise.</p><a href="#" class="service-link">Selengkapnya <i
+                            enterprise.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Corporate Network" class="service-link">Selengkapnya <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -237,7 +234,7 @@
                         <div class="service-icon-wrap orange"><i class="fas fa-video"></i></div>
                         <h5>Instalasi CCTV</h5>
                         <p>Pemasangan sistem CCTV terintegrasi dengan monitoring cloud dan penyimpanan lokal untuk
-                            keamanan properti Anda.</p><a href="#" class="service-link">Selengkapnya <i
+                            keamanan properti Anda.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Instalasi CCTV" class="service-link">Selengkapnya <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -246,7 +243,7 @@
                         <div class="service-icon-wrap red"><i class="fas fa-server"></i></div>
                         <h5>Konfigurasi Mikrotik</h5>
                         <p>Setup dan konfigurasi router Mikrotik profesional untuk manajemen bandwidth, firewall, QoS,
-                            dan load balancing.</p><a href="#" class="service-link">Selengkapnya <i
+                            dan load balancing.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Konfigurasi Mikrotik" class="service-link">Selengkapnya <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -255,7 +252,7 @@
                         <div class="service-icon-wrap teal"><i class="fas fa-tools"></i></div>
                         <h5>Network Maintenance</h5>
                         <p>Layanan pemeliharaan jaringan berkala, monitoring proaktif 24/7, dan respons cepat terhadap
-                            gangguan teknis.</p><a href="#" class="service-link">Selengkapnya <i
+                            gangguan teknis.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Network Maintenance" class="service-link">Selengkapnya <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -264,7 +261,7 @@
                         <div class="service-icon-wrap indigo"><i class="fas fa-headset"></i></div>
                         <h5>Technical Support 24/7</h5>
                         <p>Tim support teknis berpengalaman siap membantu Anda kapan saja â€” pagi, siang, malam, bahkan
-                            di jam 2 pagi.</p><a href="#" class="service-link">Selengkapnya <i
+                            di jam 2 pagi.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Technical Support 24/7" class="service-link">Selengkapnya <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -273,103 +270,28 @@
     </section>
 
     <!-- ==================== COVERAGE ==================== -->
-    <section class="coverage-section section-padding" id="coverage">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <div class="section-badge"
-                    style="background: rgba(0,201,255,0.1); border-color: rgba(0,201,255,0.25); color: var(--accent);">
-                    <i class="fas fa-globe-asia"></i> Coverage
-                </div>
-                <h2 class="section-title">Jangkauan & Portofolio</h2>
-                <p class="section-subtitle mx-auto">Jaringan fiber optik kami terus berkembang ke seluruh penjuru
-                    Indonesia</p>
-            </div>
-            <div class="map-container" data-aos="zoom-in" data-aos-duration="1000">
-                <svg class="map-svg" viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M80,60 Q100,50 120,65 Q135,80 130,100 Q125,130 115,155 Q100,175 85,180 Q70,175 65,155 Q60,130 65,100 Q70,75 80,60Z"
-                        fill="rgba(0,201,255,0.08)" stroke="rgba(0,201,255,0.2)" stroke-width="1" />
-                    <path
-                        d="M170,185 Q200,175 250,178 Q300,180 350,182 Q400,184 430,188 Q440,192 430,196 Q400,200 350,198 Q300,196 250,194 Q200,192 170,190 Q165,188 170,185Z"
-                        fill="rgba(0,201,255,0.08)" stroke="rgba(0,201,255,0.2)" stroke-width="1" />
-                    <path
-                        d="M220,60 Q260,45 300,55 Q330,65 340,90 Q345,120 330,145 Q310,160 280,165 Q250,160 230,140 Q215,115 215,90 Q218,70 220,60Z"
-                        fill="rgba(0,201,255,0.08)" stroke="rgba(0,201,255,0.2)" stroke-width="1" />
-                    <path
-                        d="M380,70 Q395,60 410,70 Q415,85 405,100 Q415,110 420,125 Q415,140 400,145 Q390,135 395,120 Q385,110 380,95 Q375,80 380,70Z"
-                        fill="rgba(0,201,255,0.08)" stroke="rgba(0,201,255,0.2)" stroke-width="1" />
-                    <path
-                        d="M530,60 Q570,45 610,55 Q640,70 650,100 Q645,135 625,155 Q600,165 570,155 Q545,140 535,115 Q530,85 530,60Z"
-                        fill="rgba(0,201,255,0.08)" stroke="rgba(0,201,255,0.2)" stroke-width="1" />
-                    <path
-                        d="M440,195 Q460,190 480,193 Q500,196 520,200 Q530,204 520,208 Q500,206 480,203 Q460,200 440,198 Q435,197 440,195Z"
-                        fill="rgba(0,201,255,0.08)" stroke="rgba(0,201,255,0.2)" stroke-width="1" />
-                    <path d="M480,100 Q495,92 505,100 Q510,115 500,125 Q490,120 485,110 Q480,105 480,100Z"
-                        fill="rgba(0,201,255,0.08)" stroke="rgba(0,201,255,0.2)" stroke-width="1" />
-                    <line class="map-line" x1="100" y1="120" x2="240" y2="100" />
-                    <line class="map-line" x1="240" y1="100" x2="395" y2="105" />
-                    <line class="map-line" x1="395" y1="105" x2="495" y2="110" />
-                    <line class="map-line" x1="395" y1="105" x2="580" y2="100" />
-                    <line class="map-line" x1="240" y1="100" x2="300" y2="188" />
-                    <line class="map-line" x1="300" y1="188" x2="395" y2="105" />
-                    <line class="map-line" x1="300" y1="188" x2="480" y2="200" />
-                    <circle class="map-node" cx="100" cy="120" r="5" />
-                    <circle class="map-node" cx="85" cy="160" r="5" />
-                    <circle class="map-node" cx="80" cy="100" r="4" />
-                    <circle class="map-node" cx="120" cy="150" r="4" />
-                    <circle class="map-node" cx="130" cy="165" r="4" />
-                    <circle class="map-node" cx="240" cy="100" r="5" />
-                    <circle class="map-node" cx="290" cy="80" r="4" />
-                    <circle class="map-node" cx="270" cy="140" r="5" />
-                    <circle class="map-node" cx="310" cy="110" r="4" />
-                    <circle class="map-node" cx="300" cy="188" r="6" />
-                    <circle class="map-node" cx="340" cy="185" r="4" />
-                    <circle class="map-node" cx="370" cy="188" r="5" />
-                    <circle class="map-node" cx="395" cy="105" r="6" />
-                    <circle class="map-node" cx="410" cy="130" r="4" />
-                    <circle class="map-node" cx="400" cy="80" r="4" />
-                    <circle class="map-node" cx="495" cy="110" r="4" />
-                    <circle class="map-node" cx="480" cy="200" r="4" />
-                    <circle class="map-node" cx="540" cy="200" r="4" />
-                    <circle class="map-node" cx="580" cy="100" r="5" />
-                    <text x="300" y="208" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Poppins"
-                        text-anchor="middle">Jakarta</text>
-                    <text x="395" y="125" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Poppins"
-                        text-anchor="middle">Makassar</text>
-                    <text x="370" y="205" fill="rgba(255,255,255,0.4)" font-size="8" font-family="Poppins"
-                        text-anchor="middle">Surabaya</text>
-                    <text x="580" y="118" fill="rgba(255,255,255,0.4)" font-size="8" font-family="Poppins"
-                        text-anchor="middle">Jayapura</text>
-                </svg>
-            </div>
-            <div class="text-center" data-aos="fade-up">
-                <div class="coverage-badge"><i class="fas fa-signal"></i> Coverage Expanding â€¢ 50 New Cities in 2026
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- ==================== PORTFOLIO ==================== -->
     <section class="section-padding" id="portfolio" style="background: var(--surface);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <div class="section-badge"><i class="fas fa-briefcase"></i> Portofolio</div>
-                <h2 class="section-title">Proyek Terbaru Kami</h2>
-                <p class="section-subtitle mx-auto">Beberapa proyek unggulan yang telah kami selesaikan dengan sukses
+                <h2 class="section-title">Kolaborasi Pendidikan & Magang Mandiri</h2>
+                <p class="section-subtitle mx-auto">Wadah integrasi antara dunia industri, kampus, SMK, dan pengembangan bakat secara mandiri.
                 </p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
                     <div class="portfolio-card">
                         <div class="portfolio-img-wrap"><img
-                                src="https://picsum.photos/seed/campus-network-smart/600/400.jpg"
+                                src="https://bk.smkn27jkt.sch.id/wp-content/uploads/2019/11/PTN-JABODETABEK.jpg"
                                 alt="Smart Campus Network" class="portfolio-img">
-                            <div class="portfolio-category">Education</div>
+                            <div class="portfolio-category">KAMPUS</div>
                         </div>
                         <div class="portfolio-body">
-                            <h5>Smart Campus Network</h5>
-                            <p>Implementasi jaringan kampus terintegrasi dengan WiFi 6, VLAN management, dan bandwidth
-                                control untuk 5.000+ pengguna concurrent di Universitas Hasanuddin.</p>
+                            <h5>Sinergi Riset & Praktik Kerja</h5>
+                            <p>Program kerja sama dengan perguruan tinggi dalam penyelarasan kurikulum teknologi, kuliah tamu, dan program magang bersertifikat.</p>
                             <div class="portfolio-date"><i class="far fa-calendar-alt me-1"></i> Selesai: Desember 2025
                             </div>
                         </div>
@@ -378,14 +300,13 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="portfolio-card">
                         <div class="portfolio-img-wrap"><img
-                                src="https://picsum.photos/seed/office-tower-fiber/600/400.jpg"
+                                src="https://dashboard.primakara.ac.id/uploads/Jurusan_Kuliah_yang_cocok_untuk_anak_TKJ_6376d7856c.jpg"
                                 alt="Dedicated Fiber Office Tower" class="portfolio-img">
-                            <div class="portfolio-category">Business</div>
+                            <div class="portfolio-category">SMK / VOKASI</div>
                         </div>
                         <div class="portfolio-body">
-                            <h5>Dedicated Fiber Office Tower</h5>
-                            <p>Penarikan fiber optik dedicated 500 Mbps ke gedung perkantoran 25 lantai dengan
-                                redundansi link dan SLA 99.95% untuk Centro Business Park.</p>
+                            <h5>Link & Match Industri SMK</h5>
+                            <p>Kolaborasi aktif bersama Sekolah Menengah Kejuruan untuk menyiapkan lulusan siap kerja melalui program PKL dan kelas industri.</p>
                             <div class="portfolio-date"><i class="far fa-calendar-alt me-1"></i> Selesai: Oktober 2025
                             </div>
                         </div>
@@ -394,14 +315,13 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="portfolio-card">
                         <div class="portfolio-img-wrap"><img
-                                src="https://picsum.photos/seed/residential-ftth-cluster/600/400.jpg"
+                                src="https://career.acc.co.id/_next/image?url=https%3A%2F%2Fnetimg.acc.co.id%2Fredberries%2Fdata_content%2Fnews%2Fnews_779.webp%3Fts%3D085035&w=2048&q=75"
                                 alt="FTTH Residential Cluster" class="portfolio-img">
-                            <div class="portfolio-category">Residential</div>
+                            <div class="portfolio-category">MAGANG MANDIRI</div>
                         </div>
                         <div class="portfolio-body">
-                            <h5>FTTH Residential Cluster</h5>
-                            <p>Deployment FTTH untuk perumahan 1.200 unit dengan teknologi GPON, menjangkau setiap rumah
-                                dengan kecepatan minimum 50 Mbps di Gateway Residence.</p>
+                            <h5>Independent Internship</h5>
+                            <p>Kesempatan bagi mahasiswa dan siswa aktif secara individu untuk mengasah skill teknis langsung di dalam ekosistem Fajar Technos.</p>
                             <div class="portfolio-date"><i class="far fa-calendar-alt me-1"></i> Selesai: Agustus 2025
                             </div>
                         </div>
@@ -424,7 +344,7 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
                     <div class="portfolio-card">
                         <div class="portfolio-img-wrap"><img
-                                src="https://picsum.photos/seed/fiber-optic-blog/600/400.jpg" alt="Blog Post"
+                                src="https://bce.telkomuniversity.ac.id/wp-content/uploads/2024/10/kebel-optic.jpeg" alt="Blog Post"
                                 class="portfolio-img">
                             <div class="portfolio-category" style="background: rgba(0,82,204,0.85);">Teknologi</div>
                         </div>
@@ -439,7 +359,7 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="portfolio-card">
                         <div class="portfolio-img-wrap"><img
-                                src="https://picsum.photos/seed/network-security-tips/600/400.jpg" alt="Blog Post"
+                                src="https://mgmall.s3.amazonaws.com/img/062024/3fb199d43544753d01ddb6684e6b8f64f8549a8b.jpg" alt="Blog Post"
                                 class="portfolio-img">
                             <div class="portfolio-category" style="background: rgba(124,77,255,0.85);">Keamanan</div>
                         </div>
@@ -454,7 +374,7 @@
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="portfolio-card">
                         <div class="portfolio-img-wrap"><img
-                                src="https://picsum.photos/seed/isp-selection-guide/600/400.jpg" alt="Blog Post"
+                                src="https://dct.co.id/wp-content/uploads/2023/11/18.-Produsen-Triangle-Tower-Menara-Segitiga-dan-Peran-Pentingnya-dalam-Jaringan-5G-DCT-2.webp" alt="Blog Post"
                                 class="portfolio-img">
                             <div class="portfolio-category" style="background: rgba(0,200,83,0.85);">Panduan</div>
                         </div>
@@ -754,7 +674,7 @@
                             <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
                             <div>
                                 <div class="contact-info-label">Telepon</div>
-                                <div class="contact-info-value"><a href="tel:+62411123456">(0411) 123-456</a></div>
+                                <div class="contact-info-value"><a href="https://wa.me/6283186918751?text=Halo%20PT%20Fajar%20Techno%20System,%20saya%20ingin%20bertanya%20tentang%20layanan%20internet.">(+62) 831-869-18751</a></div>
                             </div>
                         </div>
                         <div class="contact-info-item">
@@ -792,13 +712,7 @@
                     <p class="footer-desc">PT Fajar Broadband adalah penyedia layanan internet dan solusi jaringan
                         terpercaya di Indonesia. Kami berkomitmen menghadirkan konektivitas berkualitas tinggi untuk
                         rumah, bisnis, dan institusi.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20internet"
-                            class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                    
                 </div>
                 <div class="col-lg-2 col-md-6 col-6">
                     <div class="footer-title">Layanan</div>
@@ -814,23 +728,16 @@
                 <div class="col-lg-2 col-md-6 col-6">
                     <div class="footer-title">Perusahaan</div>
                     <ul class="footer-links">
-                        <li><a href="#">Tentang Kami</a></li>
-                        <li><a href="#">Portofolio</a></li>
-                        <li><a href="#">Karir</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#portfolio">Portofolio</a></li>
+                       
+                        <li><a href="#blog">Blog</a></li>
+         
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-title">Bantuan & Support</div>
-                    <ul class="footer-links">
-                        <li><a href="#">Pusat Bantuan</a></li>
-                        <li><a href="#">Cek Coverage Area</a></li>
-                        <li><a href="#">Panduan Pembayaran</a></li>
-                        <li><a href="#">Status Jaringan</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
+                
                     <div class="mt-4"
                         style="background: rgba(255,255,255,0.04); border-radius: 14px; padding: 16px; border: 1px solid rgba(255,255,255,0.06);">
                         <div style="font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 6px;">Emergency
