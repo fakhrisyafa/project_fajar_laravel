@@ -692,3 +692,134 @@ body {
         transform: translateY(-6px);
     }
 }
+/* FOOTER MODERN */
+.footer-section {
+    background: #071426;
+    padding: 70px 0 25px;
+    color: rgba(255,255,255,0.75);
+}
+
+.footer-section .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+
+/* Brand */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 18px;
+}
+
+.footer-brand-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#00c9ff,#0052cc);
+    border-radius: 12px;
+    color:white;
+}
+
+
+/* Deskripsi */
+.footer-desc {
+    max-width: 380px;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    text-align: justify;
+    color: rgba(255,255,255,0.65);
+}
+
+
+/* Judul footer */
+.footer-title {
+    color:white;
+    font-size:1.05rem;
+    font-weight:700;
+    margin-bottom:20px;
+    position:relative;
+}
+
+
+
+
+/* Menu */
+.footer-links {
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.footer-links li {
+    margin-bottom:12px;
+}
+
+.footer-links a {
+    color:rgba(255,255,255,0.65);
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer-links a:hover {
+    color:#00c9ff;
+    padding-left:5px;
+}
+
+
+/* Support card */
+.footer-section .mt-4 {
+    margin-top:0!important;
+    background:rgba(255,255,255,.05)!important;
+    backdrop-filter:blur(10px);
+    border-radius:18px!important;
+    padding:22px!important;
+    border:1px solid rgba(255,255,255,.1)!important;
+    min-width:260px;
+}
+
+.footer-section .mt-4 a {
+    display:block;
+    margin-top:8px;
+}
+
+
+/* garis bawah */
+.footer-bottom {
+    margin-top:50px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.footer-bottom p {
+    margin:0;
+    color:rgba(255,255,255,.5);
+    font-size:.9rem;
+}
+
+
+/* responsive */
+@media(max-width:768px){
+
+.footer-section .row{
+    flex-direction:column;
+}
+
+.footer-section .col-lg-4:last-child {
+    text-align:left;
+}
+
+.footer-bottom .text-md-end{
+    text-align:center!important;
+    margin-top:15px;
+}
+
+}

@@ -198,8 +198,7 @@
                         <div class="service-icon-wrap blue"><i class="fas fa-network-wired"></i></div>
                         <h5>Fiber Optic Internet</h5>
                         <p>Koneksi internet berkecepatan tinggi melalui jaringan fiber optik hingga 1 Gbps untuk
-                            kebutuhan rumah dan bisnis.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Fiber Optic Internet" class="service-link">Selengkapnya <i
-                                class="fas fa-arrow-right"></i></a>
+                            kebutuhan rumah dan bisnis.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
@@ -207,8 +206,7 @@
                         <div class="service-icon-wrap cyan"><i class="fas fa-satellite-dish"></i></div>
                         <h5>Dedicated Internet</h5>
                         <p>Bandwidth dedicated simetris dengan SLA 99.9% untuk korporasi, data center, dan instansi yang
-                            membutuhkan koneksi stabil.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Dedicated Internet" class="service-link">Selengkapnya <i
-                                class="fas fa-arrow-right"></i></a>
+                            membutuhkan koneksi stabil.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
@@ -216,8 +214,7 @@
                         <div class="service-icon-wrap green"><i class="fas fa-wifi"></i></div>
                         <h5>Wireless Internet</h5>
                         <p>Solusi internet wireless untuk area yang belum terjangkau fiber optik, cocok untuk daerah
-                            terpencil dan lokasi sementara.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Wireless Internet" class="service-link">Selengkapnya <i
-                                class="fas fa-arrow-right"></i></a>
+                            terpencil dan lokasi sementara.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
@@ -225,8 +222,7 @@
                         <div class="service-icon-wrap purple"><i class="fas fa-building"></i></div>
                         <h5>Corporate Network</h5>
                         <p>Perancangan dan implementasi jaringan korporat, VPN, VLAN, dan infrastruktur IT untuk skala
-                            enterprise.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Corporate Network" class="service-link">Selengkapnya <i
-                                class="fas fa-arrow-right"></i></a>
+                            enterprise.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
@@ -234,8 +230,7 @@
                         <div class="service-icon-wrap orange"><i class="fas fa-video"></i></div>
                         <h5>Instalasi CCTV</h5>
                         <p>Pemasangan sistem CCTV terintegrasi dengan monitoring cloud dan penyimpanan lokal untuk
-                            keamanan properti Anda.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Instalasi CCTV" class="service-link">Selengkapnya <i
-                                class="fas fa-arrow-right"></i></a>
+                            keamanan properti Anda.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="250">
@@ -243,8 +238,7 @@
                         <div class="service-icon-wrap red"><i class="fas fa-server"></i></div>
                         <h5>Konfigurasi Mikrotik</h5>
                         <p>Setup dan konfigurasi router Mikrotik profesional untuk manajemen bandwidth, firewall, QoS,
-                            dan load balancing.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Konfigurasi Mikrotik" class="service-link">Selengkapnya <i
-                                class="fas fa-arrow-right"></i></a>
+                            dan load balancing.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
@@ -252,8 +246,7 @@
                         <div class="service-icon-wrap teal"><i class="fas fa-tools"></i></div>
                         <h5>Network Maintenance</h5>
                         <p>Layanan pemeliharaan jaringan berkala, monitoring proaktif 24/7, dan respons cepat terhadap
-                            gangguan teknis.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Network Maintenance" class="service-link">Selengkapnya <i
-                                class="fas fa-arrow-right"></i></a>
+                            gangguan teknis.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="350">
@@ -261,15 +254,14 @@
                         <div class="service-icon-wrap indigo"><i class="fas fa-headset"></i></div>
                         <h5>Technical Support 24/7</h5>
                         <p>Tim support teknis berpengalaman siap membantu Anda kapan saja â€” pagi, siang, malam, bahkan
-                            di jam 2 pagi.</p><a href="https://wa.me/6283186918751?text=Halo%20saya%20ingin%20bertanya%20tentang%20layanan%20Technical Support 24/7" class="service-link">Selengkapnya <i
-                                class="fas fa-arrow-right"></i></a>
+                            di jam 2 pagi.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== COVERAGE ==================== -->
+
 
 
     <!-- ==================== PORTFOLIO ==================== -->
@@ -681,8 +673,7 @@
                             <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
                                 <div class="contact-info-label">Kantor</div>
-                                <div class="contact-info-value">Jl. AP Pettarani No. 88<br>Makassar, Sulawesi Selatan
-                                    90231</div>
+                                <div class="contact-info-value">Graha Pena Fajar, Mini Ruko No.06 & 07, Jl. Urip Sumoharjo No.20, Pampang, Kec. Panakkukang, Kota Makassar, Sulawesi Selatan 90144</div>
                             </div>
                         </div>
                         <div class="contact-info-item" style="margin-bottom:0;">
@@ -721,23 +712,13 @@
                         rumah, bisnis, dan institusi.</p>
                     
                 </div>
-                <div class="col-lg-2 col-md-6 col-6">
-                    <div class="footer-title">Layanan</div>
-                    <ul class="footer-links">
-                        <li><a href="#">Fiber Optic</a></li>
-                        <li><a href="#">Dedicated Internet</a></li>
-                        <li><a href="#">Wireless Internet</a></li>
-                        <li><a href="#">Corporate Network</a></li>
-                        <li><a href="#">Instalasi CCTV</a></li>
-                        <li><a href="#">Mikrotik Setup</a></li>
-                    </ul>
-                </div>
+
                 <div class="col-lg-2 col-md-6 col-6">
                     <div class="footer-title">Perusahaan</div>
                     <ul class="footer-links">
                         <li><a href="#about">Tentang Kami</a></li>
                         <li><a href="#portfolio">Portofolio</a></li>
-                       
+                        <li><a href="#services">Layanan</a></li>
                         <li><a href="#blog">Blog</a></li>
          
                     </ul>
@@ -759,10 +740,7 @@
                     <div class="col-md-6 text-center text-md-start">
                         <p>&copy; 2026 PT Fajar Broadband. All Rights Reserved.</p>
                     </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <p>Designed with <i class="fas fa-heart" style="color: #FF1744;"></i> for Indonesia's Digital
-                            Future</p>
-                    </div>
+                 
                 </div>
             </div>
         </div>
