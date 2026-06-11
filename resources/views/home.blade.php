@@ -692,10 +692,17 @@
                                 <div class="contact-info-value">Senin - Sabtu: 08:00 - 21:00<br>Support: 24/7</div>
                             </div>
                         </div>
-                        <div class="map-embed" style="position:relative;"><iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127672.2!2d119.4!3d-5.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee30b5%3A0!2sMakassar!5e0!3m2!1sid!2sid!4v1"
-                                allowfullscreen="" loading="lazy"></iframe></div>
-                    </div>
+                        <div class="map-embed" style="margin-top: 20px;">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.7930639731726!2d119.44057917665918!3d-5.136993706773362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefd0034e7f38d%3A0x6024b4309b935750!2sPT%20Fajar%20Techno%20System!5e0!3m2!1sid!2sid!4v1781141991906!5m2!1sid!2sid"
+                                width="100%"
+                                height="250"
+                                style="border:0; border-radius: 12px;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
                 </div>
             </div>
         </div>
